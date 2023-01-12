@@ -4,10 +4,10 @@ const bot = new Telegraf('5914579167:AAHBhbD4JY3IhOPdk-bncrKQHzv3BEUYdmc')
 bot.start(ctx => {
   console.log("Received /start command")
   try {
-    return ctx.reply("Hi")
+    ctx.reply("Hi")
   } catch (e) {
     console.error("error in start action:", e)
-    return ctx.reply("Error occured")
+    ctx.reply("Error occured")
   }
 })
 
