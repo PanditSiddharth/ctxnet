@@ -1,5 +1,5 @@
 function strt(bot){
-    
+
 bot.help(ctx => {
     console.log("Received /start command")
     try {
@@ -11,3 +11,5 @@ bot.help(ctx => {
   })
 
 }
+
+module.exports = { strt }

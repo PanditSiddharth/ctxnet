@@ -1,6 +1,6 @@
 const { Telegraf } = require("telegraf")
 const bot = new Telegraf('5914579167:AAHBhbD4JY3IhOPdk-bncrKQHzv3BEUYdmc')
-const st = reqire('/start.js')
+const st = require('./start.js')
 
 bot.start(ctx => {
   console.log("Received /start command")
@@ -12,7 +12,7 @@ bot.start(ctx => {
   }
 })
 
-await st.strt(bot);
+st.strt(bot);
 
 exports.handler = async event => {
     try {
