@@ -2,3 +2,4 @@ node_modules/
 # Local Netlify folder
 .netlify
 /ngrok.yml
+/functions/bot/polling.js
