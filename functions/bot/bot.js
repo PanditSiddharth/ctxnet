@@ -19,8 +19,6 @@ const bot = new Telegraf('5914579167:AAHBhbD4JY3IhOPdk-bncrKQHzv3BEUYdmc')
       }
     });
 
-    bot.launch()
-
 const st = require('./start.js')
 
 bot.start(ctx => {
