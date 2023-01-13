@@ -70,7 +70,7 @@ st.strt(bot);
 exports.handler = async (event, context, callback) => {
     try {
       await bot.handleUpdate(JSON.parse(event.body))
-      await bot.telegram.sendMessage('@IGNOU_BCA_Group', JSON.stringify(event))
+      // await bot.telegram.sendMessage('@IGNOU_BCA_Group', JSON.stringify(event))
       // await bot.telegram.sendMessage('@IGNOU_BCA_Group', JSON.stringify(context))
       // await bot.telegram.sendMessage('@IGNOU_BCA_Group', JSON.stringify(callback))
       return { statusCode: 200, body: "" }
