@@ -1,5 +1,5 @@
 const { Telegraf } = require("telegraf")
-const bt = new Telegraf('5914579167:AAHBhbD4JY3IhOPdk-bncrKQHzv3BEUYdmc')
+const bot = new Telegraf('5914579167:AAHBhbD4JY3IhOPdk-bncrKQHzv3BEUYdmc')
 const st = require('./start.js')
 
     // bot.on("chat_member", async ctx => {
@@ -68,7 +68,7 @@ bot.on("chat_member", ctx => {
 
 exports.handler = async event => {
     try {
-      await bt.handleUpdate(JSON.parse(event.body))
+      await bot.handleUpdate(JSON.parse(event.body))
       return { statusCode: 200, body: "" }
     } catch (e) {
       console.error("error in handler:", e)
