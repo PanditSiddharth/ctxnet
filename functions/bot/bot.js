@@ -1,6 +1,6 @@
-const { Telegraf } = require("telegraf")
-const bot = new Telegraf('5914579167:AAHBhbD4JY3IhOPdk-bncrKQHzv3BEUYdmc')
-const st = require('./start.js')
+// const { Telegraf } = require("telegraf")
+// const bot = new Telegraf('5914579167:AAHBhbD4JY3IhOPdk-bncrKQHzv3BEUYdmc')
+// const st = require('./start.js')
 
     // bot.on("chat_member", async ctx => {
     //   try {
@@ -21,19 +21,19 @@ const st = require('./start.js')
     // });
 
 
-bot.start(ctx => {
-  console.log("Received /start command")
-  try {
-    ctx.reply("Hi")
-  } catch (e) {
-    console.error("error in start action:", e)
-    ctx.reply("Error occured")
-  }
-})
+// bot.start(ctx => {
+//   console.log("Received /start command")
+//   try {
+//     ctx.reply("Hi")
+//   } catch (e) {
+//     console.error("error in start action:", e)
+//     ctx.reply("Error occured")
+//   }
+// })
 
 // PORT = process.env.PORT
 
-st.strt(bot);
+// st.strt(bot);
 
 // bot.on("chat_member", ctx => {
 //       ctx.reply("working")
@@ -65,9 +65,19 @@ st.strt(bot);
 // }
 //   })
 
+const TelegramBot = require('node-telegram-bot-api');
+const bot = new TelegramBot('5914579167:AAHBhbD4JY3IhOPdk-bncrKQHzv3BEUYdmc');
+
+
 exports.handler = async event => {
     try {
       await bot.handleUpdate(JSON.parse(event.body))
+      bot.on('message', (msg) => {
+        const chatId = msg.chat.id;
+        // send a message to the chat acknowledging receipt of their message
+        bot.sendMessage(chatId, 'Received your message');
+      });
+
       return { statusCode: 200, body: "" }
     } catch (e) {
       console.error("error in handler:", e)
