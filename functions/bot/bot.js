@@ -1,5 +1,5 @@
-// const { Telegraf } = require("telegraf")
-// const bot = new Telegraf('5914579167:AAHBhbD4JY3IhOPdk-bncrKQHzv3BEUYdmc')
+const { Telegraf } = require("telegraf")
+const bt = new Telegraf('5914579167:AAHBhbD4JY3IhOPdk-bncrKQHzv3BEUYdmc')
 // const st = require('./start.js')
 
     // bot.on("chat_member", async ctx => {
@@ -71,7 +71,7 @@ const bot = new TelegramBot('5914579167:AAHBhbD4JY3IhOPdk-bncrKQHzv3BEUYdmc');
 
 exports.handler = async event => {
     try {
-      // await bot.handleUpdate(JSON.parse(event.body))
+      await bt.handleUpdate(JSON.parse(event.body))
       let evente = await JSON.parse(event.body);
       bot.on('message', (msg) => {
         const chatId = msg.chat.id;
