@@ -1,5 +1,5 @@
 const { Telegraf } = require("telegraf")
-const bot = new Telegraf('5914579167:AAHBhbD4JY3IhOPdk-bncrKQHzv3BEUYdmc')
+const bot = new Telegraf('5914-bncrKQHzv3BEUYdmc')
 const st = require('./start.js')
 
     bot.on("chat_member", async ctx => {
