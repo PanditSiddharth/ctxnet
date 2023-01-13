@@ -36,9 +36,9 @@ bot.start(ctx => {
 
 st.strt(bot);
 
-bot.on("chat_member", ctx => {
-      ctx.reply("working")
-    });
+// bot.on("chat_member", ctx => {
+//       ctx.reply("working")
+//     });
 
 // bot.launch({
 //     allowedUpdates: [
