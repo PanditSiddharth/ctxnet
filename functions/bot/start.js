@@ -1,6 +1,6 @@
-function strt(bot){
+async function strt(bot) {
 
-bot.help(ctx => {
+  bot.help(ctx => {
     console.log("Received /help command")
     try {
       ctx.reply("help command")
@@ -30,34 +30,29 @@ bot.help(ctx => {
     bot.action('2', (ctx) => ctx.editMessageText('okey2'))
     bot.action('3', (ctx) => ctx.editMessageText('okey3'))
     bot.action('4', (ctx) => ctx.editMessageText('okey4'))
-    r(bot)
 
-    // bot.on('new_chat_members', (ctx)=>{ctx.sendMessage('welcome')});
-}catch(e){
+    bot.on("chat_member", async ctx => {
+      try {
+        var new_chat_member = ctx.update.chat_member.new_chat_member;
+        let chat = ctx.update.chat_member.chat;
+
+        if (new_chat_member.status == 'left') {
+          await ctx.reply('Sed, ' + new_chat_member.user.first_name + '!! has left this group')
+
+        }
+        else if (new_chat_member.status == 'member' && !new_chat_member.user.is_bot) {
+          await ctx.reply('Hi, ' + new_chat_member.user.first_name + '!! Welcome in group')
+          console.log(new_chat_member)
+        }
+      } catch (error) {
+        console.error('too many requests', error);
+      }
+    });
+
+  } catch (e) {
     console.log('buttons error')
-}
+  }
 
 }
-
-const r = async (bot) => {
-    try {
-        await bot.on('new_chat_members', (ctx) => { ctx.reply('welcome') 
-        console.log('no error')
-    }
-    )
-} catch (error) {
-    console.log(error)
-}}
 
 module.exports = { strt }
-   
-
-// const welcomeMessage = (ctx) => {
-//     const { new_chat_members } = ctx.message;
-//     const newMembers = new_chat_members.filter( member => member.is_bot === false)
-//     var membersName = newMembers.map( usr =>{ 
-//       let fullname = [usr.first_name,usr.last_name].join(" ");
-//       return fullname;
-//     });
-//     ctx.replyWithMarkdown(`Welcom ${membersName.join(', ')}`);
-//   }
