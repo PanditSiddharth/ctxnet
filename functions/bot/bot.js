@@ -1,5 +1,5 @@
 const { Telegraf } = require("telegraf")
-const bot = new Telegraf('5914579167:AAHBhbD4JY3IhOPdk-bncrKQHzv3BEUYdmc')
+const bot = new Telegraf('process.env.TKN')
 const st = require('./start.js')
 
 bot.telegram.setWebhook('https://ctxnet.netlify.app/api/bot', {
