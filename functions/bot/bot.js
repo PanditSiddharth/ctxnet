@@ -1,6 +1,6 @@
 const { Telegraf } = require("telegraf")
 const bt = new Telegraf('5914579167:AAHBhbD4JY3IhOPdk-bncrKQHzv3BEUYdmc')
-// const st = require('./start.js')
+const st = require('./start.js')
 
     // bot.on("chat_member", async ctx => {
     //   try {
@@ -39,37 +39,36 @@ bot.on("chat_member", ctx => {
       ctx.reply("working")
     });
 
-// bot.launch({
-//     allowedUpdates: [
-//       'update_id',
-//       'message',
-//       'edited_message',
-//       'channel_post',
-//       'edited_channel_post',
-//       'inline_query',
-//       'chosen_inline_result',
-//       'callback_query',
-//       'shipping_query',
-//       'pre_checkout_query',
-//       'poll',
-//       'poll_answer',
-//       'my_chat_member',
-//       'chat_member',
-//       'chat_join_request'
-//     ],
-//     dropPendingUpdates: false, // Don't activate this
-// webhook : {
-//     domain : "https://ctxnet.netlify.app",
-//     path: "/api/bot",
-//     port : 80 //or any other port open for you
-// }
-//   })
+bot.launch({
+    allowedUpdates: [
+      'update_id',
+      'message',
+      'edited_message',
+      'channel_post',
+      'edited_channel_post',
+      'inline_query',
+      'chosen_inline_result',
+      'callback_query',
+      'shipping_query',
+      'pre_checkout_query',
+      'poll',
+      'poll_answer',
+      'my_chat_member',
+      'chat_member',
+      'chat_join_request'
+    ],
+    dropPendingUpdates: false, // Don't activate this
+webhook : {
+    domain : "https://ctxnet.netlify.app",
+    path: "/api/bot",
+    port : 80 //or any other port open for you
+}
+  })
 
 
 exports.handler = async event => {
     try {
       await bt.handleUpdate(JSON.parse(event.body))
-
       return { statusCode: 200, body: "" }
     } catch (e) {
       console.error("error in handler:", e)
