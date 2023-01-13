@@ -68,9 +68,6 @@ st.strt(bot);
 exports.handler = async event => {
     try {
       await bot.handleUpdate(JSON.parse(event.body))
-      await bot.hears("chat_member", ctx => {
-        ctx.reply("working")
-      })  
       return { statusCode: 200, body: "" }
     } catch (e) {
       console.error("error in handler:", e)
