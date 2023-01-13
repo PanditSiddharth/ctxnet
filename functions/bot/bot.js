@@ -31,12 +31,14 @@ bot.start(ctx => {
   }
 })
 
+PORT = process.env.PORT
+
 st.strt(bot);
 
 bot.launch({
   webhook: {
     domain: 'https://ctxnet.netlify.app',
-    port: 8888,
+    PORT,
     path: '/api/bot'
   },
   allowedUpdates: [
