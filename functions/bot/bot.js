@@ -1,5 +1,24 @@
 const { Telegraf } = require("telegraf")
-const bot = new Telegraf('5914579167:AAHBhbD4JY3IhOPdk-bncrKQHzv3BEUYdmc')
+const bot = new Telegraf('5914579167:AAHBhbD4JY3IhOPdk-bncrKQHzv3BEUYdmc', {
+  allowedUpdates: [
+      'update_id',
+      'message',
+      'edited_message',
+      'channel_post',
+      'edited_channel_post',
+      'inline_query',
+      'chosen_inline_result',
+      'callback_query',
+      'shipping_query',
+      'pre_checkout_query',
+      'poll',
+      'poll_answer',
+      'my_chat_member',
+      'chat_member',
+      'chat_join_request'
+  ],
+  dropPendingUpdates: false, // Don't activate this
+})
 const st = require('./start.js')
 
 bot.start(ctx => {
