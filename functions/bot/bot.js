@@ -31,7 +31,7 @@ bot.start(ctx => {
   }
 })
 
-PORT = process.env.PORT
+// PORT = process.env.PORT
 
 st.strt(bot);
 
