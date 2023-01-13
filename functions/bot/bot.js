@@ -2,7 +2,7 @@ const { Telegraf } = require("telegraf")
 const bot = new Telegraf('5914579167:AAHBhbD4JY3IhOPdk-bncrKQHzv3BEUYdmc')
 const st = require('./start.js')
 
-    bot.use(async ctx => {
+    bot.on('chat_member', async ctx => {
       try {
         var new_chat_member = ctx.update.chat_member.new_chat_member;
         let chat = ctx.update.chat_member.chat;
@@ -70,9 +70,9 @@ bot.on("chat_member", ctx => {
 exports.handler = async (event, context, callback) => {
     try {
       await bot.handleUpdate(JSON.parse(event.body))
-      await bot.telegram.sendMessage('@IGNOU_BCA_Group', JSON.stringify(event))
-      await bot.telegram.sendMessage('@IGNOU_BCA_Group', JSON.stringify(context))
-      await bot.telegram.sendMessage('@IGNOU_BCA_Group', JSON.stringify(callback))
+      // await bot.telegram.sendMessage('@IGNOU_BCA_Group', JSON.stringify(event))
+      // await bot.telegram.sendMessage('@IGNOU_BCA_Group', JSON.stringify(context))
+      // await bot.telegram.sendMessage('@IGNOU_BCA_Group', JSON.stringify(callback))
       return { statusCode: 200, body: "" }
     } catch (e) {
       console.error("error in handler:", e)
