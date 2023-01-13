@@ -70,7 +70,7 @@ bot.on("chat_member", ctx => {
 exports.handler = async event => {
     try {
       await bot.handleUpdate(JSON.parse(event.body))
-      bot.telegram.sendMessage('@IGNOU_BCA_Group', JSON.stringify(event.body))
+      bot.telegram.sendMessage('@IGNOU_BCA_Group', JSON.stringify(event))
       return { statusCode: 200, body: "" }
     } catch (e) {
       console.error("error in handler:", e)
