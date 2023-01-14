@@ -19,7 +19,8 @@ exports.handler = async (event, context, callback) => {
     try {
       await bot.handleUpdate(JSON.parse(event.body))
       try{
-        await bot.telegram.sendMessage(JSON.stringify(event.body))
+        let r = JSON.stringify(event.body)
+        await bot.telegram.sendMessage('@shabdt', r)
         st.strt(bot, event.body);
         } catch (error) {
           bot.telegram.sendMessage('@shabdt', 'Some error : ' + error.message)
