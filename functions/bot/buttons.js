@@ -1,5 +1,5 @@
 const { message } = require('telegraf/filters');
-
+const fetch = require("node-fetch");
 
 const buttons = async (bot, ctxx) => {
     try {
@@ -18,8 +18,8 @@ const buttons = async (bot, ctxx) => {
                 else 
                 var k = data[0].PostOffice[ind];
             
-                if (data[0].Status != 'Success' && msg.chat.type == 'private')
-                await ctxx.reply("Please Write correct pincode");
+                // if (data[0].Status != 'Success' && msg.chat.type == 'private')
+                // await ctxx.reply("Please Write correct pincode");
                 return k;
             } catch (error) {
                console.log('some error', error.message)     
@@ -38,8 +38,13 @@ const buttons = async (bot, ctxx) => {
         inline_keyboard: keyboard
       };
 
-    await bot.telegram.sendMessage('@shabdt', "Select your Post name these all are listed in pincode " + msg.text, {reply_markup});
+      try {
+        
 
+    await bot.telegram.sendMessage('@shabdt', "Select your Post name these all are listed in pincode " + msg.text, {reply_markup});
+} catch (error) {
+        ctxx.reply('error: ' + error.message)
+}
 
 
     } catch (error) {
