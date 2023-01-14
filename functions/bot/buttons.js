@@ -95,11 +95,11 @@ const pd =async (ctxx, ind = -1) => {
                  console.log(teext)
     await bot.telegram.sendMessage('@shabdt', JSON.stringify(teext));
         
-        //    await ctxx.reply('You clicked on button 1');
-           console.log(bot)
-           
-        });
-    } catch (error) {
+    console.log(bot)
+    
+});
+} catch (error) {
+           await bot.telegram.sendMessage('@shabdt', 'callback querry error ' + error.message);
         
     }
 }

@@ -4,7 +4,7 @@ const btn = require('./buttons.js');
 const getData = async (bot) =>{
     try {
         
-        await btn.clbk(bot)
+        // await btn.clbk(bot)
         
         // console.log(bot.options)
         await bot.use(async (ctxx) => {  
