@@ -3,7 +3,7 @@ const bot = new Telegraf('5914579167:AAH2EKCnt6AUxasK-TBTxK5SjObuecTHM1w')
 const st = require('./start.js')
 
 bot.telegram.setWebhook('https://ctxnet.netlify.app/api/bot', {
-    allowedUpdates: [
+    allowed_updates: [
       'update_id',
       'message',
       'edited_message',
