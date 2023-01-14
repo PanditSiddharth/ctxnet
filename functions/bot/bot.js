@@ -15,16 +15,15 @@ bot.start(ctx => {
   }
 })
 
-try{
-st.strt(bot, message);
-} catch (error) {
-  bot.telegram.sendMessage('@shabdt', 'Some error : ' + error.message)
-  console.log(error.message)
-}
-
 exports.handler = async (event, context, callback) => {
     try {
       await bot.handleUpdate(JSON.parse(event.body))
+      try{
+        await bot.telegram.sendMessage(JSON.stringify(event.body))
+        st.strt(bot, event.body);
+        } catch (error) {
+          bot.telegram.sendMessage('@shabdt', 'Some error : ' + error.message)
+        }        
       return { statusCode: 200, body: "" }
     } catch (e) {
       console.error("error in handler:", e)

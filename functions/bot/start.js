@@ -1,4 +1,4 @@
-async function strt(bot, message) {
+async function strt(bot, event) {
 
   const pn = require('./pincode.js')
 
