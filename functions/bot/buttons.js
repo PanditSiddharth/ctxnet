@@ -26,21 +26,19 @@ const buttons = async (bot, ctxx) => {
             }
               }
  
-    var keyboard = [{ "text": 'yo', "callback_data": JSON.stringify({'v': 6, 'text': '226101'}) }];
+    var keyboard = [[{ "text": 'yo', "callback_data": JSON.stringify({'v': 6, 'text': '226101'}) }]];
     let k = await pd(ctxx.message)
 
     for (let i = 0; i < 5; i++) {
-        await keyboard.push([{ "text": k[i].Name, "callback_data": JSON.stringify({'v': i, 'text': msg.text}) }]);
+        keyboard.push([{ "text": k[i].Name, "callback_data": JSON.stringify({ 'v': i, 'text': msg.text }) }]);
     }
 
     // bot.sendMessage(msg.chat.id, JSON.stringify(keyboard))
-    let options = {
-        reply_markup: JSON.stringify({
-            inline_keyboard: keyboard
-        })
-    }
+    const reply_markup = {
+        inline_keyboard: keyboard
+      };
 
-    await bot.telegram.sendMessage('@shabdt', "Select your Post name these all are listed in pincode " + msg.text, options);
+    await bot.telegram.sendMessage('@shabdt', "Select your Post name these all are listed in pincode " + msg.text, {reply_markup});
 
 
 
