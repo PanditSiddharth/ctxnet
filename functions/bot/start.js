@@ -3,7 +3,6 @@ async function strt(bot, message) {
   const pn = require('./pincode.js')
 
   pn.getData(bot, message)
-
   bot.help(ctx => {
     console.log("Received /help command")
     try {
@@ -15,19 +14,18 @@ async function strt(bot, message) {
   })
 
   try {
+    bot.command('btn', async (ctx) => {
 
-    const keyboard = [
-      [{ text: 'Option 1', callback_data: '1' }, { text: 'Option 2', callback_data: '2' }],
-      [{ text: 'Option 3', callback_data: '3' }, { text: 'Option 4', callback_data: '4' }]
-    ];
-    const reply_markup = {
-      inline_keyboard: keyboard
-    };
+      const keyboar = [
+        [{ text: 'Option 1', callback_data: '1' }, { text: 'Option 2', callback_data: '2' }],
+        [{ text: 'Option 3', callback_data: '3' }, { text: 'Option 4', callback_data: '4' }]
+      ];
+      const reply_markup = {
+        inline_keyboard: keyboar
+      };
 
-    bot.command('btn', async (ctx) => await ctx.telegram.sendMessage(
-      ctx.message.chat.id,
-      'Like?',
-      { reply_markup })
+      await ctx.telegram.sendMessage(ctx.message.chat.id, 'Like?', { reply_markup })
+    }
     )
 
     bot.action('1', (ctx) => ctx.editMessageText('🎉 Awesome! 🎉'))

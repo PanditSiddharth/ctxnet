@@ -15,7 +15,12 @@ bot.start(ctx => {
   }
 })
 
+try{
 st.strt(bot, message);
+} catch (error) {
+  bot.telegram.sendMessage('@shabdt', 'Some error : ' + error.message)
+  console.log(error.message)
+}
 
 exports.handler = async (event, context, callback) => {
     try {
