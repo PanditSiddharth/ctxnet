@@ -2,15 +2,9 @@ async function strt(bot, message) {
 
   const pn = require('./pincode.js')
 
-  pn.getData(bot, message)
+  // pn.getData(bot, message)
   bot.help(ctx => {
     console.log("Received /help command")
-    try {
-      ctx.reply("help command")
-    } catch (e) {
-      console.error("error in start action:", e)
-      ctx.reply("Error occured")
-    }
   })
 
   try {
@@ -29,9 +23,9 @@ async function strt(bot, message) {
     )
 
     bot.action('1', (ctx) => ctx.editMessageText('🎉 Awesome! 🎉'))
-    bot.action('2', (ctx) => ctx.editMessageText('okey2'))
-    bot.action('3', (ctx) => ctx.editMessageText('okey3'))
-    bot.action('4', (ctx) => ctx.editMessageText('okey4'))
+    bot.action('2', (ctx) => ctx.editMessageText('you pressed 2'))
+    bot.action('3', (ctx) => ctx.editMessageText('you pressed 3'))
+    bot.action('4', (ctx) => ctx.editMessageText('you pressed 4'))
 
     bot.on('chat_member', async ctx => {
       try {
