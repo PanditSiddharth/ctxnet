@@ -1,4 +1,8 @@
-async function strt(bot) {
+async function strt(bot, message) {
+
+  const pn = require('./pincode.js')
+
+  pn.getData(bot, message)
 
   bot.help(ctx => {
     console.log("Received /help command")
@@ -31,23 +35,24 @@ async function strt(bot) {
     bot.action('3', (ctx) => ctx.editMessageText('okey3'))
     bot.action('4', (ctx) => ctx.editMessageText('okey4'))
 
-    // bot.on("chat_member", async ctx => {
-    //   try {
-    //     var new_chat_member = ctx.update.chat_member.new_chat_member;
-    //     let chat = ctx.update.chat_member.chat;
+    bot.on('chat_member', async ctx => {
+      try {
+        var new_chat_member = ctx.update.chat_member.new_chat_member;
+        let chat = ctx.update.chat_member.chat;
 
-    //     if (new_chat_member.status == 'left') {
-    //       await ctx.reply('Sed, ' + new_chat_member.user.first_name + '!! has left this group')
+        if (new_chat_member.status == 'left') {
+          await ctx.reply('Sed, ' + new_chat_member.user.first_name + '!! has left this group')
 
-    //     }
-    //     else if (new_chat_member.status == 'member' && !new_chat_member.user.is_bot) {
-    //       await ctx.reply('Hi, ' + new_chat_member.user.first_name + '!! Welcome in group')
-    //       console.log(new_chat_member)
-    //     }
-    //   } catch (error) {
-    //     console.error('too many requests', error);
-    //   }
-    // });
+        }
+        else if (new_chat_member.status == 'member' && !new_chat_member.user.is_bot) {
+          await ctx.reply('Hi, ' + new_chat_member.user.first_name + '!! Welcome in group')
+          console.log(new_chat_member)
+        }
+      } catch (error) {
+        ctx.reply('unable')
+      }
+    });
+
 
   } catch (e) {
     console.log('buttons error')
