@@ -1,5 +1,5 @@
 const { message } = require('telegraf/filters');
-const fetch = require("node-fetch");
+// const fetch = require("node-fetch");
 
 const buttons = async (bot, ctxx) => {
     try {
