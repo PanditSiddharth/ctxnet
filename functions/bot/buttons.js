@@ -29,7 +29,7 @@ const buttons = async (bot, ctxx) => {
     var keyboard = [];
     let k = await pd(ctxx.message)
 
-    for (let i = 0; i < k.length; i++) {
+    for (let i = 0; i < 5; i++) {
         await keyboard.push([{ "text": k[i].Name, "callback_data": JSON.stringify({'v': i, 'text': msg.text}) }]);
     }
 
