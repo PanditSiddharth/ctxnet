@@ -1,8 +1,8 @@
-async function strt(bot, event) {
+async function strt(bot) {
 
   const pn = require('./pincode.js')
 
-  // pn.getData(bot, message)
+  pn.getData(bot)
   bot.help(ctx => {
     console.log("Received /help command")
   })
@@ -22,7 +22,7 @@ async function strt(bot, event) {
     }
     )
 
-    bot.action('1', (ctx) => ctx.editMessageText('🎉 Awesome! 🎉'))
+    bot.action('1', (ctx) => ctx.editMessageText('🎉 Awesome! 🎉')) 
     bot.action('2', (ctx) => ctx.editMessageText('you pressed 2'))
     bot.action('3', (ctx) => ctx.editMessageText('you pressed 3'))
     bot.action('4', (ctx) => ctx.editMessageText('you pressed 4'))

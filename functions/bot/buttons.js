@@ -2,8 +2,8 @@ const { message } = require('telegraf/filters');
 // const fetch = require("node-fetch");
 
 const buttons = async (bot, ctxx) => {
+    var msg = ctxx.message;
     try {
-        var msg = ctxx.message;
 
             const pd =async (ctxx, ind = -1) => {
 
@@ -29,9 +29,9 @@ const buttons = async (bot, ctxx) => {
     var keyboard = [[{ "text": 'yo', "callback_data": JSON.stringify({'v': 6, 'text': '226101'}) }]];
     let k = await pd(ctxx.message)
 
-    for (let i = 0; i < 5; i++) {
-        keyboard.push([{ "text": k[i].Name, "callback_data": JSON.stringify({ 'v': i, 'text': msg.text }) }]);
-    }
+    // for (let i = 0; i < 5; i++) {
+    //     keyboard.push([{ "text": k[i].Name, "callback_data": JSON.stringify({ 'v': i, 'text': msg.text }) }]);
+    // }
 
     // bot.sendMessage(msg.chat.id, JSON.stringify(keyboard))
     const reply_markup = {

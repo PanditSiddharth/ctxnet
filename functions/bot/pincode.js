@@ -1,10 +1,9 @@
 
 const btn = require('./buttons.js');
 
-const getData = async (bot, message) =>{
+const getData = async (bot) =>{
     try {
-
-
+        
         await btn.clbk(bot)
         
         // console.log(bot.options)
@@ -13,7 +12,7 @@ const getData = async (bot, message) =>{
 
         if (!isNaN(parseInt(ctxx.message.text))) {
             console.log('yes')
-            btn.buttons(bot, ctxx)
+            await btn.buttons(bot, ctxx)
         }
     })
     } catch (error) {
