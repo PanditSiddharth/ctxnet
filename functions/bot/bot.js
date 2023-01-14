@@ -23,7 +23,7 @@ bot.telegram.setWebhook('https://ctxnet.netlify.app/api/bot', {
     dropPendingUpdates: false, // Don't activate this
   })
 
-   bot.startWebhook(`/api/bot`, null, 4000);
+   bot.startWebhook(8443);
 
     bot.on('chat_member', async ctx => {
       try {
