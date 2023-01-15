@@ -6,11 +6,9 @@ const { message } = require('telegraf/filters');
 // bot.telegram.setWebhook('https://ctxnet.netlify.app/api/bot')
 
 bot.start(ctx => {
-  console.log("Received /start command")
   try {
-    ctx.reply("Hi")
+    return ctx.reply('Please enter any pincode to see details\nExample: send 226101')
   } catch (e) {
-    console.error("error in start action:", e)
     ctx.reply("Error occured")
   }
 })

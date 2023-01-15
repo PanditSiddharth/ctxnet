@@ -3,7 +3,7 @@ async function strt(bot) {
   const pn = require('./pincode.js')
 
   bot.help(ctx => {
-    console.log("Received /help command")
+    ctx.reply('Please enter any pincode to see details\nExample: send 226101')
   })
  
   try {

@@ -14,6 +14,8 @@ const getData = async (bot) =>{
             console.log('yes')
             await btn.buttons(bot, ctxx)
         }
+        else if(ctxx.chat.type == 'private')
+        ctxx.reply('Please enter any pincode to see details\nExample: send 226101')
     })
 
     } catch (error) {

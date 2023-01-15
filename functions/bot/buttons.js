@@ -23,11 +23,11 @@ const buttons = async (bot, ctxx) => {
             ctxx.reply('error: ' + error.message)
         }
     }else{
-        await bot.telegram.sendMessage('@shabdt', 'Pin not exists')
+        await bot.telegram.sendMessage(ctxx.chat.id, 'Pin not exists')
     }
 
     } catch (error) {
-        await bot.telegram.sendMessage('@shabdt', 'Buttons Error: ' + error.message)
+        await bot.telegram.sendMessage(ctxx.chat.id, 'Buttons Error: ' + error.message)
     }
 }
 
