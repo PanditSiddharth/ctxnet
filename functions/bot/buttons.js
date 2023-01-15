@@ -18,7 +18,7 @@ const buttons = async (bot, ctxx) => {
         };
 
         try {
-            await bot.telegram.sendMessage('@shabdt', "Select your Post name these all are listed in pincode " + msg.text, { reply_markup });
+            await bot.telegram.sendMessage(ctxx.chat.id, "Select your Post name these all are listed in pincode " + msg.text, { reply_markup });
         } catch (error) {
             ctxx.reply('error: ' + error.message)
         }
@@ -56,16 +56,18 @@ async function clbk(bot) {
 
             let det = await Object.entries(teext);
             for (let i = 0; i < det.length; i++) {
-            await keyboar.push([{ "text": det[i][0], "callback_data": JSON.stringify({ 'v': [i][0], 'text': jd.text }) },
-              { "text": `${det[i][1]}`, "callback_data": JSON.stringify({ 'v': [i][0], 'text': jd.text }) }]);
+            await keyboar.push([{ "text": det[i][0], "callback_data": JSON.stringify({ 'v': jd.v, 'text': jd.text }) },
+              { "text": `${det[i][1]}`, "callback_data": JSON.stringify({ 'v': jd.v, 'text': jd.text }) }]);
             }
             const reply_markup = {
                 inline_keyboard: keyboar
             };
-    
-         await bot.telegram.sendMessage('@shabdt', `Details of choosen Location ${det[0][1]} in pincode ${jd.text} are given`, { reply_markup });
-
-
+    try {
+         await bot.telegram.editMessageText(opts.chat_id, opts.message_id,undefined, `Details of choosen Location ${det[0][1]} in pincode ${jd.text} are given`, { reply_markup });
+        // bot.telegram.editMessageText(opts.chat_id, opts.message_id, undefined,'idk')
+    } catch (error) {
+        bot.telegram.answerCbQuery(cb.update.callback_query.id)
+    }
         });
         // await bot.telegram.sendMessage('@shabdt', 'callback querry ');
 
