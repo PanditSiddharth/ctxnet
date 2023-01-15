@@ -77,28 +77,28 @@ const pd =async (ctxx, ind = -1) => {
 }
   }
       let we = 1;
-//   await bot.on('callback_query',async function onCallbackQuery(callbackQuery) {
-//             // let action = await callbackQuery.data;
-//             const data = await callbackQuery.update.callback_query.data;
-//             const msg = await callbackQuery.update.callback_query.message;
-//             const opts = {
-//                 chat_id: msg.chat.id,
-//                 message_id: msg.message_id,
-//             };
+  await bot.on('callback_query',async function onCallbackQuery(callbackQuery) {
+            // let action = await callbackQuery.data;
+            const data = await callbackQuery.update.callback_query.data;
+            const msg = await callbackQuery.update.callback_query.message;
+            const opts = {
+                chat_id: msg.chat.id,
+                message_id: msg.message_id,
+            };
         
-//                  var jd = await JSON.parse(data)
-//                  let v = jd.v;
-//                 console.log(jd.v)
-//                 console.log(jd.text);
+                 var jd = await JSON.parse(data)
+                 let v = jd.v;
+                console.log(jd.v)
+                console.log(jd.text);
         
-//                  var teext = await pd(jd, v)
-//                  console.log(teext)
-//     await bot.telegram.sendMessage('@shabdt', JSON.stringify(teext));
+                 var teext = await pd(jd, v)
+                 console.log(teext)
+    await bot.telegram.sendMessage('@shabdt', JSON.stringify(teext));
         
-//     console.log(bot)
+    console.log(bot)
     
-// });
-await bot.telegram.sendMessage('@shabdt', 'callback querry ');
+});
+// await bot.telegram.sendMessage('@shabdt', 'callback querry ');
 
 
 } catch (error) {
