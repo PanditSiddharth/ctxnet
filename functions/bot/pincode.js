@@ -1,20 +1,21 @@
-
+const { message } = require('telegraf/filters');
 const btn = require('./buttons.js');
 
 const getData = async (bot) =>{
     try {
         
-        // await btn.clbk(bot)
+        await btn.clbk(bot)
         
         // console.log(bot.options)
-        await bot.use(async (ctxx) => {  
+     
             // ctxx.reply(hs=> hs.reply(bot))
-
+            bot.on(message('text'),async ctxx =>{ 
         if (!isNaN(parseInt(ctxx.message.text))) {
             console.log('yes')
             await btn.buttons(bot, ctxx)
         }
     })
+
     } catch (error) {
       console.log(error);
     }
