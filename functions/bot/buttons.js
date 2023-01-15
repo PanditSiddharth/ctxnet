@@ -1,5 +1,5 @@
 const { message } = require('telegraf/filters');
-// const fetch = require("node-fetch");
+const axios = require('axios');
 
 const buttons = async (bot, ctxx) => {
     var msg = ctxx.message;
@@ -11,8 +11,8 @@ const buttons = async (bot, ctxx) => {
                 var msg = ctxx;
                 console.log(msg)
                 const url = 'https://api.postalpincode.in/pincode/' + parseInt(msg.text);
-                const response = await fetch(url);
-                const data = await response.json();
+                const response = await axios.get(url);
+                const data = await response.data;
                 if(ind == -1)
                 var k = data[0].PostOffice;
                 else 
@@ -62,8 +62,8 @@ const pd =async (ctxx, ind = -1) => {
     var msg = ctxx;
     console.log(msg)
     const url = 'https://api.postalpincode.in/pincode/' + parseInt(msg.text);
-    const response = await fetch(url);
-    const data = await response.json();
+    const response = await axios.get(url);
+    const data = await response.data;
     if(ind == -1)
     var k = data[0].PostOffice;
     else 

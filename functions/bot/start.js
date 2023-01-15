@@ -2,11 +2,10 @@ async function strt(bot) {
 
   const pn = require('./pincode.js')
 
-  pn.getData(bot)
   bot.help(ctx => {
     console.log("Received /help command")
   })
-
+ 
   try {
     bot.command('btn', async (ctx) => {
 
@@ -44,6 +43,9 @@ async function strt(bot) {
         ctx.reply('unable')
       }
     });
+
+
+  pn.getData(bot)
 
 
   } catch (e) {
