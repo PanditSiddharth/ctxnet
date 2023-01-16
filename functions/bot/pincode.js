@@ -5,13 +5,10 @@ const getData = async (bot) =>{
     try {
         
         await btn.clbk(bot)
-        
-        // console.log(bot.options)
-     
-            // ctxx.reply(hs=> hs.reply(bot))
+
             bot.on(message('text'),async ctxx =>{ 
         if (!isNaN(parseInt(ctxx.message.text))) {
-            console.log('yes')
+
             await btn.buttons(bot, ctxx)
         }
         else if(ctxx.chat.type == 'private')
