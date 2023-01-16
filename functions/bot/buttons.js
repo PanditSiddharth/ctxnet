@@ -16,23 +16,23 @@ const buttons = async (bot, ctxx, v = -1) => {
         if (k) {
             let keyboard = [];
             let i = 0;
-    if(1 == k.length%2){
-            while (i < k.length -1) {
-                keyboard.push([{ "text": k[i].Name, "callback_data": JSON.stringify({ 'v': i, 'text': vy }) }, 
-                { "text": k[i+1].Name, "callback_data": JSON.stringify({ 'v': i+1, 'text': vy }) }]);
-                i += 2;
-            }
-            await keyboard.push([{ "text": k[i].Name, "callback_data": JSON.stringify({ 'v': i, 'text': vy }) },
+            if (1 == k.length % 2) {
+                while (i < k.length - 1) {
+                    keyboard.push([{ "text": k[i].Name, "callback_data": JSON.stringify({ 'v': i, 'text': vy }) },
+                    { "text": k[i + 1].Name, "callback_data": JSON.stringify({ 'v': i + 1, 'text': vy }) }]);
+                    i += 2;
+                }
+                await keyboard.push([{ "text": k[i].Name, "callback_data": JSON.stringify({ 'v': i, 'text': vy }) },
                 { "text": `\u274C Close`, "callback_data": JSON.stringify({ 'v': 'close', 'text': vy }) }]);
-        }
-        else{
-             while (i < k.length) {
-                keyboard.push([{ "text": k[i].Name, "callback_data": JSON.stringify({ 'v': i, 'text': vy }) }, 
-                { "text": k[i+1].Name, "callback_data": JSON.stringify({ 'v': i+1, 'text': vy }) }]);
-                i += 2;
             }
-            await keyboard.push([{ "text": `\u274C Close`, "callback_data": JSON.stringify({ 'v': 'close', 'text': vy }) }]);
-        }
+            else {
+                while (i < k.length) {
+                    keyboard.push([{ "text": k[i].Name, "callback_data": JSON.stringify({ 'v': i, 'text': vy }) },
+                    { "text": k[i + 1].Name, "callback_data": JSON.stringify({ 'v': i + 1, 'text': vy }) }]);
+                    i += 2;
+                }
+                await keyboard.push([{ "text": `\u274C Close`, "callback_data": JSON.stringify({ 'v': 'close', 'text': vy }) }]);
+            }
             const reply_markup = {
                 inline_keyboard: keyboard
             };
@@ -42,7 +42,7 @@ const buttons = async (bot, ctxx, v = -1) => {
                     return await bot.telegram.sendMessage(msg.chat.id, "Select your Post name these all are listed in pincode " + msg.text, { reply_markup });
                 await bot.telegram.editMessageText(msg.chat.id, msg.message_id, undefined, "Select your Post name these all are listed in pincode " + msg.text, { reply_markup });
             } catch (error) {
-                // ctxx.reply('error: ' + error.message)
+
             }
         } else {
             await bot.telegram.sendMessage(msg.chat.id, 'Pin not exists')
@@ -58,13 +58,11 @@ async function clbk(bot) {
         let we = 1;
         await bot.on('callback_query', async function onCallbackQuery(cb) {
 
-            // let action = await callbackQuery.data;
             const data = await cb.update.callback_query.data;
             const msg = await cb.update.callback_query.message;
 
             let id = msg.chat.id;
             let mid = msg.message_id;
-            // console.log(msg)
 
             var jd = await JSON.parse(data)
 
@@ -77,14 +75,12 @@ async function clbk(bot) {
             if (jd.v == 'back')
                 return await buttons(bot, cb.update.callback_query, jd)
             else {
+
                 var teext = await pd(jd, jd.v)
-
-
                 let det = await Object.entries(teext);
                 for (let i = 0; i < det.length; i++) {
                     if (['DeliveryStatus', 'Circle', 'Division'].includes(det[i][0]))
                         continue;
-
 
                     await keyboar.push([{ "text": det[i][0], "callback_data": JSON.stringify({ 'v': jd.v, 'text': jd.text }) },
                     { "text": `${det[i][1]}`, "callback_data": JSON.stringify({ 'v': jd.v, 'text': jd.text }) }]);
@@ -98,7 +94,6 @@ async function clbk(bot) {
                 };
                 try {
                     await bot.telegram.editMessageText(id, mid, undefined, `Details of choosen Location ${det[0][1]} in pincode ${jd.text} are given`, { reply_markup });
-                    // bot.telegram.editMessageText(id, mid, undefined,'idk')
                 } catch (error) {
                     bot.telegram.answerCbQuery(cb.update.callback_query.id)
                 }
@@ -126,8 +121,6 @@ const pd = async (ctxx, ind = -1) => {
         } else {
             var k = false;
         }
-        // if (data[0].Status != 'Success' && msg.chat.type == 'private')
-        // await ctxx.reply("Please Write correct pincode");
         return k;
     } catch (error) {
         console.log('some error', error.message)

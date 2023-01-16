@@ -5,7 +5,7 @@ async function strt(bot) {
   bot.help(ctx => {
     ctx.reply('Please enter any pincode to see details\nExample: send 226101')
   })
- 
+
   try {
     bot.command('btn', async (ctx) => {
 
@@ -21,7 +21,7 @@ async function strt(bot) {
     }
     )
 
-    bot.action('1', (ctx) => ctx.editMessageText('🎉 Awesome! 🎉')) 
+    bot.action('1', (ctx) => ctx.editMessageText('🎉 Awesome! 🎉'))
     bot.action('2', (ctx) => ctx.editMessageText('you pressed 2'))
     bot.action('3', (ctx) => ctx.editMessageText('you pressed 3'))
     bot.action('4', (ctx) => ctx.editMessageText('you pressed 4'))
@@ -44,9 +44,7 @@ async function strt(bot) {
       }
     });
 
-
-  pn.getData(bot)
-
+    pn.getData(bot)
 
   } catch (e) {
     console.log('buttons error')
