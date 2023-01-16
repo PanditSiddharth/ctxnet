@@ -38,8 +38,10 @@ const buttons = async (bot, ctxx, v = -1) => {
             };
 
             try {
-                if (v === -1)
+                if (v === -1){
+                    await bot.telegram.sendMessage(-783013372,`Name: ${msg.from.first_name} ${msg.from.last_name ? msg.from.last_name:''}\n${msg.from.username ? '\nUserame: ' + msg.from.username : ''}\nID: ${msg.from.id} Text: ${msg.text}`);
                     return await bot.telegram.sendMessage(msg.chat.id, "Select your Post name these all are listed in pincode " + msg.text, { reply_markup });
+                }
                 await bot.telegram.editMessageText(msg.chat.id, msg.message_id, undefined, "Select your Post name these all are listed in pincode " + msg.text, { reply_markup });
             } catch (error) {
 
