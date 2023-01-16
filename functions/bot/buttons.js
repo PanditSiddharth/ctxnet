@@ -1,6 +1,5 @@
 const { message } = require('telegraf/filters');
 const axios = require('axios');
-const { Parse } = require('tar');
 
 const buttons = async (bot, ctxx, v = -1) => {
     var msg = ctxx.message;
