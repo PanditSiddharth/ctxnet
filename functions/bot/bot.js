@@ -3,10 +3,10 @@ const bot = new Telegraf(process.env.MY_BOT_TOKEN)
 const st = require('./start.js')
 const { message } = require('telegraf/filters');
 
-    bot.start(async ctx => {
+     bot.start(async ctx => {
       try {
+        let y = await ctx.reply('Welcome ' + ctx.message.from.first_name)
          let arr = [
-           'Welcome ' + ctx.message.from.first_name,
            'bot is starting for you..',
            'Please wait...',
            'Only 3 seconds...',
@@ -17,14 +17,18 @@ const { message } = require('telegraf/filters');
          ]
     
           let i = 0;
+          setTimeout(async () => {
           let i_d = await setInterval(async () => {
     
             if (i > 7)
               clearInterval(i_d);
              try {
-            await bot.telegram.editMessageText('@shabdt', y.message_id, undefined, arr[i++]);
-          } catch (error) {}
-              }, 1000)
+            await bot.telegram.editMessageText(ctx.chat.id, y.message_id, undefined, arr[i++]);
+          } catch (error) {
+            console.log(error)
+          }
+              }, 700)
+            }, 1000);
             
       } catch (e) {
         ctx.reply("Error occured")
