@@ -3,9 +3,15 @@ const bot = new Telegraf(process.env.MY_BOT_TOKEN)
 const st = require('./start.js')
 const { message } = require('telegraf/filters');
 
-     bot.start(async ctx => {
+    bot.start(async (ctx) => {
       try {
-        let y = await ctx.reply('Please enter any pincode to see details\nExample: send 226101') 
+              let y = await ctx.reply('Bot starting..')
+              setTimeout(() => {
+              bot.telegram.deleteMessage(ctx.chat.id, y.message_id)
+             .then(()=> ctx.reply('Please enter any pincode to see details\nExample: send 226101') )
+
+            }, 1000);
+             
       } catch (e) {
         ctx.reply("Error occured")
       }
