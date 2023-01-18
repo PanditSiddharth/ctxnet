@@ -1,5 +1,6 @@
 const { Telegraf } = require("telegraf")
-const bot = new Telegraf(process.env.MY_BOT_TOKEN)
+const bot = new Telegraf(process.env.MY_BOT_TOKEN, { telegram: { webhookReply: false } } )
+
 const st = require('./start.js')
 const { message } = require('telegraf/filters');
 
