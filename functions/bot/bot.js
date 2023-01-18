@@ -5,13 +5,7 @@ const { message } = require('telegraf/filters');
 
     bot.start(async (ctx) => {
       try {
-              let y = await ctx.reply('Bot starting..')
-              setTimeout(() => {
-              bot.telegram.deleteMessage(ctx.chat.id, y.message_id)
-             .then(()=> ctx.reply('Please enter any pincode to see details\nExample: send 226101') )
-
-            }, 1000);
-             
+           await ctx.reply('Please enter any pincode to see details\nExample: send 226101')
       } catch (e) {
         ctx.reply("Error occured")
       }
