@@ -24,6 +24,7 @@ bot.start(ctx => {
          try {
         await bot.telegram.editMessageText('@shabdt', y.message_id, undefined, arr[i++]);
       } catch (error) {}
+          }, 1000)
         
   } catch (e) {
     ctx.reply("Error occured")
