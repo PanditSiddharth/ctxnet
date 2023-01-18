@@ -11,6 +11,18 @@ const { message } = require('telegraf/filters');
       }
     })
 
+    bot.command('st', async (ctx) => {
+      try {
+              let y = await ctx.reply('Bot starting..',).then((msg)=>{ 
+                setTimeout(() => {  
+                bot.telegram.editMessageText(ctx.chat.id, msg.message_id, undefined, 'yo')
+              }, 2000)})
+             
+      } catch (e) {
+        ctx.reply("Error occured")
+      }
+    })
+
 exports.handler = async (event, context, callback) => {
   try {
     await bot.handleUpdate(JSON.parse(event.body))
