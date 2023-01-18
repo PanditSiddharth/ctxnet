@@ -5,31 +5,7 @@ const { message } = require('telegraf/filters');
 
      bot.start(async ctx => {
       try {
-        let y = await ctx.reply('Welcome ' + ctx.message.from.first_name)
-         let arr = [
-           'bot is starting for you..',
-           'Please wait...',
-           'Only 3 seconds...',
-           'Only 2 seconds...',
-           'Only 1 seconds...',
-           'Bot Started..  :)',
-           'Please enter any pincode to see details\nExample: send 226101'
-         ]
-    
-          let i = 0;
-          setTimeout(async () => {
-          let i_d = await setInterval(async () => {
-    
-            if (i > 7)
-              clearInterval(i_d);
-             try {
-            await bot.telegram.editMessageText(ctx.chat.id, y.message_id, undefined, arr[i++]);
-          } catch (error) {
-            console.log(error)
-          }
-              }, 700)
-            }, 1000);
-            
+        let y = await ctx.reply('Please enter any pincode to see details\nExample: send 226101') 
       } catch (e) {
         ctx.reply("Error occured")
       }
