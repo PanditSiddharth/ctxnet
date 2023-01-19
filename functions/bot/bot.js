@@ -4,15 +4,15 @@ const bot = new Telegraf(process.env.MY_BOT_TOKEN, { telegram: { webhookReply: f
 const st = require('./start.js')
 const { message } = require('telegraf/filters');
 
-    bot.start(async (ctx) => {
-      try {
-           await ctx.reply('Please enter any pincode to see details\nExample: send 226101')
-      } catch (e) {
-        ctx.reply("Error occured")
-      }
-    })
+    // bot.start(async (ctx) => {
+     // try {
+        //   await ctx.reply('Please enter any pincode to see details\nExample: send 226101')
+    //  } catch (e) {
+     //   ctx.reply("Error occured")
+   //   }
+ //   })
 
-    bot.command('st', async (ctx) => {
+    bot.start(async (ctx) => {
       try {
 
 const sleep = t => new Promise(r => setTimeout(r, t));
@@ -31,9 +31,12 @@ let arr = [
            'Please enter any pincode to see details\nExample: send 226101'
          ]
 
-for(let i = 0; i< 4; i++){
+for(let i = 0; i< 7; i++){
 await sleep(1000);
+try{
 await bot.telegram.editMessageText(ctx.chat.id, msg.message_id, undefined, arr[i]);
+} catch (ere) {   }
+
 }
             //  ctx.reply('Bot starting..',).then(async (msg)=>{ 
               // await sleep(100)
