@@ -20,6 +20,9 @@ const msg = await ctx.reply("Bot starting");
 await sleep(2000);
 await bot.telegram.editMessageText(ctx.chat.id, msg.message_id, undefined, 'yo');
 
+await sleep(2000);
+await bot.telegram.editMessageText(ctx.chat.id, msg.message_id, undefined, 'works well');
+
              // let y = await ctx.reply('Bot starting..',).then((msg)=>{ 
              //   setTimeout(() => {  
              //   bot.telegram.editMessageText(ctx.chat.id, msg.message_id, undefined, 'yo')
