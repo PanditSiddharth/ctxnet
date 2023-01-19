@@ -15,7 +15,7 @@ const { message } = require('telegraf/filters');
     bot.command('st', async (ctx) => {
       try {
 
-// const sleep = t => new Promise(r => setTimeout(r, t));
+const sleep = t => new Promise(r => setTimeout(r, t));
 // const msg = await ctx.reply("Bot starting");
 // await sleep(2000);
 // await bot.telegram.editMessageText(ctx.chat.id, msg.message_id, undefined, 'yo');
@@ -23,8 +23,9 @@ const { message } = require('telegraf/filters');
 // await sleep(2000);
 // await bot.telegram.editMessageText(ctx.chat.id, msg.message_id, undefined, 'works well');
 
-              ctx.reply('Bot starting..',).then((msg)=>{ 
-               bot.telegram.editMessageText(ctx.chat.id, msg.message_id, undefined, 'worksssss')
+              ctx.reply('Bot starting..',).then(async (msg)=>{ 
+               await sleep(100)
+               await bot.telegram.editMessageText(ctx.chat.id, msg.message_id, undefined, 'worksssss')
              })
              
       } catch (e) {
