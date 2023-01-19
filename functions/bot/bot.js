@@ -35,6 +35,8 @@ for(let i = 0; i< 7; i++){
 await sleep(1000);
 try{
 await bot.telegram.editMessageText(ctx.chat.id, msg.message_id, undefined, arr[i]);
+if(i>5)
+return
 } catch (ere) {   }
 
 }
