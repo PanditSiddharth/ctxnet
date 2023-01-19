@@ -15,18 +15,17 @@ const { message } = require('telegraf/filters');
     bot.command('st', async (ctx) => {
       try {
 
-const sleep = t => new Promise(r => setTimeout(r, t));
-const msg = await ctx.reply("Bot starting");
-await sleep(2000);
-await bot.telegram.editMessageText(ctx.chat.id, msg.message_id, undefined, 'yo');
+// const sleep = t => new Promise(r => setTimeout(r, t));
+// const msg = await ctx.reply("Bot starting");
+// await sleep(2000);
+// await bot.telegram.editMessageText(ctx.chat.id, msg.message_id, undefined, 'yo');
 
-await sleep(2000);
-await bot.telegram.editMessageText(ctx.chat.id, msg.message_id, undefined, 'works well');
+// await sleep(2000);
+// await bot.telegram.editMessageText(ctx.chat.id, msg.message_id, undefined, 'works well');
 
-             // let y = await ctx.reply('Bot starting..',).then((msg)=>{ 
-             //   setTimeout(() => {  
-             //   bot.telegram.editMessageText(ctx.chat.id, msg.message_id, undefined, 'yo')
-            //  }, 2000)})
+              ctx.reply('Bot starting..',).then((msg)=>{ 
+               bot.telegram.editMessageText(ctx.chat.id, msg.message_id, undefined, 'worksssss')
+             })
              
       } catch (e) {
         ctx.reply("Error occured")
