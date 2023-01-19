@@ -20,9 +20,21 @@ const msg = await ctx.reply("Bot starting");
 await sleep(1);
 await bot.telegram.editMessageText(ctx.chat.id, msg.message_id, undefined, 'yo');
 
-await sleep(1000);
-await bot.telegram.editMessageText(ctx.chat.id, msg.message_id, undefined, 'works well');
 
+let arr = [
+           'bot is starting for you..',
+           'Please wait...',
+           'Only 3 seconds...',
+           'Only 2 seconds...',
+           'Only 1 seconds...',
+           'Bot Started..  :)',
+           'Please enter any pincode to see details\nExample: send 226101'
+         ]
+
+for(let i = 0; i< 4; i++){
+await sleep(1000);
+await bot.telegram.editMessageText(ctx.chat.id, msg.message_id, undefined, arr[i]);
+}
             //  ctx.reply('Bot starting..',).then(async (msg)=>{ 
               // await sleep(100)
               // await bot.telegram.editMessageText(ctx.chat.id, msg.message_id, undefined, 'worksssss')
