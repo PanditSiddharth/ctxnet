@@ -17,7 +17,7 @@ const { message } = require('telegraf/filters');
 
 const sleep = t => new Promise(r => setTimeout(r, t));
 const msg = await ctx.reply("Bot starting");
-await sleep(100);
+await sleep(1);
 await bot.telegram.editMessageText(ctx.chat.id, msg.message_id, undefined, 'yo');
 
 await sleep(1000);
