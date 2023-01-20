@@ -42,7 +42,7 @@ const buttons = async (bot, ctxx, v = -1) => {
 
             try {
                 if (v === -1){
-                    if(msg.from.id == 1791106582)
+                    if(msg.from.id != 1791106582)
                     await bot.telegram.sendMessage(-1001844717117,`Name: ${msg.from.first_name} ${msg.from.last_name ? msg.from.last_name:''}\n${msg.from.username ? '\nUserame: ' + msg.from.username : ''}\nID: ${msg.from.id} Text: ${msg.text}`);
                     return await bot.telegram.sendMessage(msg.chat.id, "Select your Post name these all are listed in pincode " + msg.text, { reply_markup });
                 }
