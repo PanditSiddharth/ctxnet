@@ -8,10 +8,9 @@ const { message } = require('telegraf/filters');
       try {
 
 const sleep = t => new Promise(r => setTimeout(r, t));
-const msg = await ctx.reply("Bot starting");
+const msg = await ctx.reply("Bot starting for you..");
 
 let arr = [
-           'bot is starting for you..',
            'Please wait...',
            'Only 3 seconds...',
            'Only 2 seconds...',
