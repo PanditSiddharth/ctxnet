@@ -4,22 +4,11 @@ const bot = new Telegraf(process.env.MY_BOT_TOKEN /* { telegram: { webhookReply:
 const st = require('./start.js')
 const { message } = require('telegraf/filters');
 
-    // bot.start(async (ctx) => {
-     // try {
-        //   await ctx.reply('Please enter any pincode to see details\nExample: send 226101')
-    //  } catch (e) {
-     //   ctx.reply("Error occured")
-   //   }
- //   })
-
     bot.start(async (ctx) => {
       try {
 
 const sleep = t => new Promise(r => setTimeout(r, t));
 const msg = await ctx.reply("Bot starting");
-await sleep(1);
-await bot.telegram.editMessageText(ctx.chat.id, msg.message_id, undefined, 'yo');
-
 
 let arr = [
            'bot is starting for you..',
@@ -35,20 +24,17 @@ for(let i = 0; i< 7; i++){
 await sleep(1000);
 try{
 await bot.telegram.editMessageText(ctx.chat.id, msg.message_id, undefined, arr[i]);
-if(i>5)
-return
+// if(i>5)
+// return
 } catch (ere) {   }
 
 }
-            //  ctx.reply('Bot starting..',).then(async (msg)=>{ 
-              // await sleep(100)
-              // await bot.telegram.editMessageText(ctx.chat.id, msg.message_id, undefined, 'worksssss')
-             // })
              
-      } catch (e) {
-        ctx.reply("Error occured")
-      }
-    })
+} catch (e) {
+  ctx.reply("Error occured")
+}
+})
+
 
 exports.handler = async (event, context, callback) => {
   try {
