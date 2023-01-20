@@ -123,7 +123,7 @@ async function clbk(bot) {
                 }
             }
             else{
-                return bot.telegram.answerCbQuery(cb.update.callback_query.id , "You can't Operate these buttons")
+                return bot.telegram.answerCbQuery(cb.update.callback_query.id , "You can't Operate these buttons", { show_alert: true })
             }
         });
 
