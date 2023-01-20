@@ -76,12 +76,19 @@ async function clbk(bot) {
 
             let keyboar = [];
 
-            if (jd.v == 'close') {
-                bot.telegram.deleteMessage(id, mid)
-                return
+            // if (jd.v == 'close') {
+            //     console.log(msg.from.id)
+            //     console.log(jd.from.id)
+            //     if(jd.from.id == msg.from.id)
+            //     await bot.telegram.deleteMessage(id, mid)
+            //     return
+            // }
+            if (jd.v == 'back'){
+                // if(jd.from.id == msg.from.id)
+                // return await buttons(bot, cb.update.callback_query, jd)
+                // else
+                // return
             }
-            if (jd.v == 'back')
-                return await buttons(bot, cb.update.callback_query, jd)
             else {
 
                 var teext = await pd(jd, jd.v)

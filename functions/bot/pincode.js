@@ -3,7 +3,7 @@ const btn = require('./buttons.js');
 
 const getData = async (bot) => {
   try {
-
+    console.log('working')
     await btn.clbk(bot)
 
     bot.on(message('text'), async ctxx => {

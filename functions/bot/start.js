@@ -43,8 +43,9 @@ async function strt(bot) {
         ctx.reply('unable')
       }
     });
-
-    pn.getData(bot)
+    
+    console.log('working in start')
+    await pn.getData(bot)
 
   } catch (e) {
     console.log('buttons error')
