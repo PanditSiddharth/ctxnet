@@ -119,7 +119,7 @@ async function clbk(bot) {
                 try {
                     await bot.telegram.editMessageText(id, mid, undefined, `Details of choosen Location ${det[0][1]} in pincode ${jd.text} are given`, { reply_markup });
                 } catch (error) {
-                    bot.telegram.answerCbQuery(cb.update.callback_query.id , "Don't click now it is last")
+                    bot.telegram.answerCbQuery(cb.update.callback_query.id , "Don't click now it is last", { show_alert: true })
                 }
             }
             else{
