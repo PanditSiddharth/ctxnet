@@ -8,30 +8,32 @@ const buttons = async (bot, ctxx, v = -1) => {
         if (v === -1) {
             var k = await pd(msg)
             var vy = msg.text
+            var mse = msg
         }
         else {
             var k = await pd(v)
             var vy = v.text
+            var mse = v
         }
         if (k) {
             let keyboard = [];
             let i = 0;
             if (1 == k.length % 2) {
                 while (i < k.length - 1) {
-                    keyboard.push([{ "text": k[i].Name, "callback_data": JSON.stringify({ 'v': i, 'text': vy }) },
-                    { "text": k[i + 1].Name, "callback_data": JSON.stringify({ 'v': i + 1, 'text': vy }) }]);
+                    keyboard.push([{ "text": k[i].Name, "callback_data": JSON.stringify({ 'v': i, 'text': vy, "from": {'id': mse.from.id}}) },
+                    { "text": k[i + 1].Name, "callback_data": JSON.stringify({ 'v': i + 1, 'text': vy , "from": {'id': mse.from.id}}) }]);
                     i += 2;
                 }
-                await keyboard.push([{ "text": k[i].Name, "callback_data": JSON.stringify({ 'v': i, 'text': vy }) },
-                { "text": `\u274C Close`, "callback_data": JSON.stringify({ 'v': 'close', 'text': vy }) }]);
+                await keyboard.push([{ "text": k[i].Name, "callback_data": JSON.stringify({ 'v': i, 'text': vy, "from": {'id': mse.from.id}}) },
+                { "text": `\u274C Close`, "callback_data": JSON.stringify({ 'v': 'close', 'text': vy, "from": {'id': mse.from.id}}) }]);
             }
             else {
                 while (i < k.length) {
-                    keyboard.push([{ "text": k[i].Name, "callback_data": JSON.stringify({ 'v': i, 'text': vy }) },
-                    { "text": k[i + 1].Name, "callback_data": JSON.stringify({ 'v': i + 1, 'text': vy }) }]);
+                    keyboard.push([{ "text": k[i].Name, "callback_data": JSON.stringify({ 'v': i, 'text': vy, "from": {'id': mse.from.id} }) },
+                    { "text": k[i + 1].Name, "callback_data": JSON.stringify({ 'v': i + 1, 'text': vy, "from": {'id': mse.from.id} }) }]);
                     i += 2;
                 }
-                await keyboard.push([{ "text": `\u274C Close`, "callback_data": JSON.stringify({ 'v': 'close', 'text': vy, 'msid' : msg.from.id}) }]);
+                await keyboard.push([{ "text": `\u274C Close`, "callback_data": JSON.stringify({ 'v': 'close', 'text': vy, "from": {'id': mse.from.id}) }]);
             }
             const reply_markup = {
                 inline_keyboard: keyboard
@@ -88,11 +90,11 @@ async function clbk(bot) {
                     if (['DeliveryStatus', 'Circle', 'Division'].includes(det[i][0]))
                         continue;
 
-                    await keyboar.push([{ "text": det[i][0], "callback_data": JSON.stringify({ 'v': jd.v, 'text': jd.text }) },
+                    await keyboar.push([{ "text": det[i][0], "callback_data": JSON.stringify({ 'v': jd.v, 'text': jd.text, 'from': {'id': jd.from.id} }) },
                     { "text": `${det[i][1]}`, "callback_data": JSON.stringify({ 'v': jd.v, 'text': jd.text, 'from': {'id': jd.from.id} }) }]);
                 }
 
-                await keyboar.push([{ "text": '\u2190 Back', "callback_data": JSON.stringify({ 'v': 'back', 'text': jd.text }) },
+                await keyboar.push([{ "text": '\u2190 Back', "callback_data": JSON.stringify({ 'v': 'back', 'text': jd.text, 'from': {'id': jd.from.id} }) },
                 { "text": `\u274C Close`, "callback_data": JSON.stringify({ 'v': 'close', 'text': jd.text, "from": {'id': jd.from.id} }) }]);
 
                 const reply_markup = {
