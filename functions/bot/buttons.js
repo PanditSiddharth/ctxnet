@@ -89,11 +89,11 @@ async function clbk(bot) {
                         continue;
 
                     await keyboar.push([{ "text": det[i][0], "callback_data": JSON.stringify({ 'v': jd.v, 'text': jd.text }) },
-                    { "text": `${det[i][1]}`, "callback_data": JSON.stringify({ 'v': jd.v, 'text': jd.text }) }]);
+                    { "text": `${det[i][1]}`, "callback_data": JSON.stringify({ 'v': jd.v, 'text': jd.text, 'from': {'id': jd.from.id} }) }]);
                 }
 
                 await keyboar.push([{ "text": '\u2190 Back', "callback_data": JSON.stringify({ 'v': 'back', 'text': jd.text }) },
-                { "text": `\u274C Close`, "callback_data": JSON.stringify({ 'v': 'close', 'text': jd.text }) }]);
+                { "text": `\u274C Close`, "callback_data": JSON.stringify({ 'v': 'close', 'text': jd.text, "from": {'id': jd.from.id} }) }]);
 
                 const reply_markup = {
                     inline_keyboard: keyboar
