@@ -70,7 +70,15 @@ async function clbk(bot) {
             const data = await cb.update.callback_query.data;
             const msg = await cb.update.callback_query.message;
             const cui = await cb.update.callback_query.from.id;
-
+            const isAdmin =async (chid, uid) =>{
+                let mem = await bot.telegram.getChatMember(chid, uid)
+                if(mem.status == 'administrator' || mem.status == 'creator')
+                return true
+                else
+                return false
+            }
+            const adm = await isAdmin(msg.chat.id, cui)
+          
             let id = msg.chat.id;
             let mid = msg.message_id;
 
@@ -79,17 +87,17 @@ async function clbk(bot) {
             let keyboar = [];
 
             if (jd.v == 'close') {
-                if(jd.from.id == cui)
+                if(jd.from.id == cui || adm)
                 return await bot.telegram.deleteMessage(id, mid)
                 return bot.telegram.answerCbQuery(cb.update.callback_query.id, "You can't close this", true)
             }
             if (jd.v == 'back'){
-                if(jd.from.id == cui)
+                if(jd.from.id == cui || adm)
                 return await buttons(bot, cb.update.callback_query, jd)
                 else
                 return bot.telegram.answerCbQuery(cb.update.callback_query.id , "You can't back this")
             }
-            else if(jd.from.id == cui){
+            else if(jd.from.id == cui || adm){
 
                 var teext = await pd(jd, jd.v)
                 let det = await Object.entries(teext);
@@ -114,7 +122,7 @@ async function clbk(bot) {
                 }
             }
             else{
-                return bot.telegram.answerCbQuery(cb.update.callback_query.id , "You can't Operate this buttons")
+                return bot.telegram.answerCbQuery(cb.update.callback_query.id , "You can't Operate these buttons")
             }
         });
 
