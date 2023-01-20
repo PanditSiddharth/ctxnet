@@ -49,6 +49,8 @@ const buttons = async (bot, ctxx, v = -1) => {
         } else {
             if(msg.chat.type == 'private' || ( vy.length < 8 && vy.length > 3 ) )
             await bot.telegram.sendMessage(msg.chat.id, 'Pin not exists')
+            
+            await bot.telegram.sendMessage(msg.chat.id, JSON.stringify(msg.chat))
         }
 
     } catch (error) {
