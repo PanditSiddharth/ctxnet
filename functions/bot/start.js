@@ -44,7 +44,6 @@ async function strt(bot) {
       }
     });
     
-    console.log('working in start')
     await pn.getData(bot)
 
   } catch (e) {

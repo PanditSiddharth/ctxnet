@@ -9,6 +9,7 @@ const buttons = async (bot, ctxx, v = -1) => {
             var k = await pd(msg)
             var vy = msg.text
             var mse = msg
+            // console.log(mse)
         }
         else {
             var k = await pd(v)
@@ -68,6 +69,7 @@ async function clbk(bot) {
 
             const data = await cb.update.callback_query.data;
             const msg = await cb.update.callback_query.message;
+            const cui = await cb.update.callback_query.from.id;
 
             let id = msg.chat.id;
             let mid = msg.message_id;
@@ -76,20 +78,18 @@ async function clbk(bot) {
 
             let keyboar = [];
 
-            // if (jd.v == 'close') {
-            //     console.log(msg.from.id)
-            //     console.log(jd.from.id)
-            //     if(jd.from.id == msg.from.id)
-            //     await bot.telegram.deleteMessage(id, mid)
-            //     return
-            // }
-            if (jd.v == 'back'){
-                // if(jd.from.id == msg.from.id)
-                // return await buttons(bot, cb.update.callback_query, jd)
-                // else
-                // return
+            if (jd.v == 'close') {
+                if(jd.from.id == cui)
+                return await bot.telegram.deleteMessage(id, mid)
+                return bot.telegram.answerCbQuery(cb.update.callback_query.id, "You can't close this", true)
             }
-            else {
+            if (jd.v == 'back'){
+                if(jd.from.id == cui)
+                return await buttons(bot, cb.update.callback_query, jd)
+                else
+                return bot.telegram.answerCbQuery(cb.update.callback_query.id , "You can't back this")
+            }
+            else if(jd.from.id == cui){
 
                 var teext = await pd(jd, jd.v)
                 let det = await Object.entries(teext);
@@ -97,12 +97,12 @@ async function clbk(bot) {
                     if (['DeliveryStatus', 'Circle', 'Division'].includes(det[i][0]))
                         continue;
 
-                    await keyboar.push([{ "text": det[i][0], "callback_data": JSON.stringify({ 'v': jd.v, 'text': jd.text, 'from': {'id': jd.from.id} }) },
-                    { "text": `${det[i][1]}`, "callback_data": JSON.stringify({ 'v': jd.v, 'text': jd.text, 'from': {'id': jd.from.id} }) }]);
+                    await keyboar.push([{ "text": det[i][0], "callback_data": JSON.stringify({ 'v': jd.v, 'text': jd.text, 'from': {'id': cui} }) },
+                    { "text": `${det[i][1]}`, "callback_data": JSON.stringify({ 'v': jd.v, 'text': jd.text, 'from': {'id': cui} }) }]);
                 }
 
-                await keyboar.push([{ "text": '\u2190 Back', "callback_data": JSON.stringify({ 'v': 'back', 'text': jd.text, 'from': {'id': jd.from.id} }) },
-                { "text": `\u274C Close`, "callback_data": JSON.stringify({ 'v': 'close', 'text': jd.text, "from": {'id': jd.from.id} }) }]);
+                await keyboar.push([{ "text": '\u2190 Back', "callback_data": JSON.stringify({ 'v': 'back', 'text': jd.text, 'from': {'id': cui} }) },
+                { "text": `\u274C Close`, "callback_data": JSON.stringify({ 'v': 'close', 'text': jd.text, "from": {'id': cui} }) }]);
 
                 const reply_markup = {
                     inline_keyboard: keyboar
@@ -110,8 +110,11 @@ async function clbk(bot) {
                 try {
                     await bot.telegram.editMessageText(id, mid, undefined, `Details of choosen Location ${det[0][1]} in pincode ${jd.text} are given`, { reply_markup });
                 } catch (error) {
-                    bot.telegram.answerCbQuery(cb.update.callback_query.id)
+                    bot.telegram.answerCbQuery(cb.update.callback_query.id , "Don't click now it is last")
                 }
+            }
+            else{
+                return bot.telegram.answerCbQuery(cb.update.callback_query.id , "You can't Operate this buttons")
             }
         });
 
