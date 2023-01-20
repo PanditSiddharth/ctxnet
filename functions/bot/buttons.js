@@ -33,7 +33,7 @@ const buttons = async (bot, ctxx, v = -1) => {
                     { "text": k[i + 1].Name, "callback_data": JSON.stringify({ 'v': i + 1, 'text': vy, "from": {'id': mse.from.id} }) }]);
                     i += 2;
                 }
-                await keyboard.push([{ "text": `\u274C Close`, "callback_data": JSON.stringify({ 'v': 'close', 'text': vy, "from": {'id': mse.from.id}) }]);
+                await keyboard.push([{ "text": `\u274C Close`, "callback_data": JSON.stringify({ 'v': 'close', 'text': vy, "from": {'id': mse.from.id}})}]);
             }
             const reply_markup = {
                 inline_keyboard: keyboard
