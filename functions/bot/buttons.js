@@ -90,13 +90,13 @@ async function clbk(bot) {
             if (jd.v == 'close') {
                 if(jd.from.id == cui || adm)
                 return await bot.telegram.deleteMessage(id, mid)
-                return bot.telegram.answerCbQuery(cb.update.callback_query.id, "You can't close this", true)
+                return bot.telegram.answerCbQuery(cb.update.callback_query.id, "You can't close this", { show_alert: true })
             }
             if (jd.v == 'back'){
                 if(jd.from.id == cui || adm)
                 return await buttons(bot, cb.update.callback_query, jd)
                 else
-                return bot.telegram.answerCbQuery(cb.update.callback_query.id , "You can't back this")
+                return bot.telegram.answerCbQuery(cb.update.callback_query.id , "You can't back this", { show_alert: true })
             }
             else if(jd.from.id == cui || adm){
 
