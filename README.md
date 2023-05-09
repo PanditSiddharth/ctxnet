@@ -22,4 +22,4 @@
 </div>
 
 </header>
-[![install size](https://packagephobia.com/badge?p=tgind@0.2.0)](https://packagephobia.com/result?p=tgind@0.2.0)
+[install size](https://packagephobia.com/badge?p=tgind@0.2.0)](https://packagephobia.com/result?p=tgind@0.2.0)
