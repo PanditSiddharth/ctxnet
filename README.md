@@ -11,7 +11,7 @@
 	<img alt="AppVeyor" src="https://img.shields.io/appveyor/build/PanditSiddharth/Tgind?label=Tgind&style=for-the-badge">
 </a>
 <a href="https://packagephobia.com/result?p=telegraf,node-telegram-bot-api">
-	<img src="https://flat.badgen.net/packagephobia/install/telegraf" alt="install size" />
+	<img src="https://packagephobia.com/result?p=tgind@0.2.0" alt="install size" />
 </a>
 <a href="https://github.com/telegraf/telegraf">
 	<img src="https://img.shields.io/github/languages/top/PanditSiddharth/Compilers?style=flat-square&logo=github" alt="GitHub top language" />
