@@ -8,7 +8,7 @@
 <p>Modern Telegram Bot API framework for Node.js</p>
 
 <a href="https://core.telegram.org/bots/api">
-	<img src="https://img.shields.io/badge/Bot%20API-v6.5-f36caf.svg?style=flat-square" alt="Bot API Version" />
+	<img alt="AppVeyor" src="https://img.shields.io/appveyor/build/PanditSiddharth/Tgind?label=Tgind&style=for-the-badge">
 </a>
 <a href="https://packagephobia.com/result?p=telegraf,node-telegram-bot-api">
 	<img src="https://flat.badgen.net/packagephobia/install/telegraf" alt="install size" />
