@@ -14,7 +14,7 @@
 	<img src="https://flat.badgen.net/packagephobia/install/telegraf" alt="install size" />
 </a>
 <a href="https://github.com/telegraf/telegraf">
-	<img src="https://img.shields.io/github/languages/top/telegraf/telegraf?style=flat-square&logo=github" alt="GitHub top language" />
+	<img src="https://img.shields.io/github/languages/top/PanditSiddharth/Compilers?style=flat-square&logo=github" alt="GitHub top language" />
 </a>
 <a href="https://telegram.me/TelegrafJSChat">
 	<img src="https://img.shields.io/badge/English%20chat-grey?style=flat-square&logo=telegram" alt="English chat" />
